@@ -19,7 +19,7 @@
 
 ```js
 async ({ cityId }) => {
-  if (cityId !== 1) return 'not found';
+  if (cityId !== 1) return new Error('Not found');
   return { name: 'Rome', area: 1285, region: 'Lazio' };
 };
 ```
@@ -37,7 +37,7 @@ async ({ cityId }) => {
   access: 'public',
 
   async method({ cityId }) {
-    if (cityId !== 1) return 'not found';
+    if (cityId !== 1) return new Error('Not found');
     return { name: 'Rome', area: 1285, region: 'Lazio' };
   },
 });
@@ -56,16 +56,22 @@ async ({ cityId }) => {
   },
 
   async method({ cityId }) {
-    if (cityId !== 1) return 'not found';
+    if (cityId !== 1) return new Error('Not found');
     return { name: 'Rome', area: 1285, region: 'Lazio' };
+  },
+
+  returns: {
+    name: 'string',
+    area: 'number',
+    region: 'string'
   },
 });
 ```
 
 - Попробуем вызвать: `await api.example.getCity({ cityId: '1' });`
 - Получим ошибку, ведь мы передали `cityId` типа `string`
-
-Посмотрим более сложный обработчик:
+- Попробуйте сети отдавать из функции объект неправильной структуры
+- Посмотрим более сложный обработчик:
 `application/api/example.1/citiesByCountry.js`
 
 ```js
