@@ -13,6 +13,7 @@
   - [Bus: mapping remote services](content/en/LAYERS.md#bus)
 - [🧩 Application server features](content/en/SERVER.md)
   - [Multithreading](content/en/SERVER.md#multithreading)
+  - [Context isolation](content/en/SERVER.md#context-isolation)
   - [Logging](content/en/SERVER.md#logging)
   - [Serve static files: application for browser-side](content/en/SERVER.md#serve-static)
   - [Scheduling](content/en/SERVER.md#scheduling)
