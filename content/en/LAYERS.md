@@ -7,10 +7,10 @@ protocol layer: metacom
 ## API
 
 Let's introduce two basic concepts:
-- `endpoint` - a single API `method` or RPC `procedure` to be invoked from browser-side app or third-party apps. Endpoint has a `contract` or `signature` and a name.
-- `unit` - group of `endpoints` (an `interface`). Unit has a name, and may has a version (e.g. `chat.1`, `chat.2`, `auth`).
+- `endpoint` - a single API method or RPC procedure to be invoked from browser-side app or third-party apps. Endpoint has a contract or signature and a name.
+- `unit` - group of endpoints (an interface). Unit has a name, and may have a version (e.g. `chat.1`, `chat.2`, `auth`).
 
-To create API `endpoint` put file `getCity.js` to folder `application/api/geo` with following source:
+To create API endpoint put file `getCity.js` to folder `application/api/geo` with following source:
 
 ```js
 async ({ cityId }) => {
@@ -23,7 +23,7 @@ async ({ cityId }) => {
 - Open the browser and DevTools (F12)
 - On the `Console` tab and write: `await api.geo.getCity({ cityId: 1 });`
 - You will get: `metacom.js:18 Uncaught Error: Forbidden`
-- You need either to deploy a database for the auth subsystem or remove restrictions to asscees this method
+- You need either to deploy a database for the auth subsystem or remove restrictions to access this method
 - Add `access: 'public'` so endpoint will look like this:
 
 ```js
