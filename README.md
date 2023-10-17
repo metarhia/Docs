@@ -1,8 +1,8 @@
 ## Metarhia tech stack documentation
 
-- [🚀 Getting started](content/en/GUIDE.md)
-  - [Application template](content/en/GUIDE.md#application-template)
-  - [Quick start and configuration](content/en/GUIDE.md#quick-start)
+- [🚀 Getting started](content/en/START.md)
+  - [Application template](content/en/START.md#application-template)
+  - [Quick start and configuration](content/en/START.md#quick-start)
 - [🥞 Application server layers](content/en/LAYERS.md)
   - [Network protocol layer: metacom](content/en/LAYERS.md#network)
   - [API layer: units and endpoints](content/en/LAYERS.md#api)
