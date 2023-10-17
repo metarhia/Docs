@@ -1,5 +1,7 @@
 ## 🧩 Application server features
 
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🥞 Application server layers](/content/en/LAYERS.md)
+
 ## Multithreading
 
 ## Context isolation
@@ -19,3 +21,5 @@ files: application for browser-side
 ## Start
 
 ## Graceful shutdown
+
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🥞 Application server layers](/content/en/LAYERS.md)

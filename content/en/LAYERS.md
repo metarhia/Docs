@@ -1,5 +1,7 @@
 # 🥞 Application server layers
 
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
+
 ## Network
 
 protocol layer: metacom
@@ -171,3 +173,5 @@ try {
   console.log('Can not access time server');
 }
 ```
+
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
