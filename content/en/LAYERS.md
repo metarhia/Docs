@@ -2,10 +2,6 @@
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
 
-## Network
-
-protocol layer: metacom
-
 ## API
 
 Let's introduce two basic concepts:
@@ -68,15 +64,23 @@ async ({ cityId }) => {
 - You will get an error, because `cityId` is a `string`
 - Try to return an object with the wrong structure from an endpoint
 
-Let's look at a more complex handler: `application/api/geo/citiesByCountry.js`
+## Network
+
+Metarhia hides network protocol layer from developer at both client and server sides.
+Metarhia provides promise-based abstraction for RPC calls implemented in [metacom](https://github.com/metarhia/metacom).
 
 ```js
-async ({ countryId }) => {
-  const fields = ['cityId', 'name'];
-  const where = { countryId };
-  const data = await domain.db.select('City', fields, where);
-  return { result: 'success', data };
-};
+const metacom = Metacom.create('https://domainname.com:8001');
+await metacom.load('auth', 'chat');
+const { auth, chat } = metacom.api;
+
+chat.on('message', (event) => {
+  console.log(event.message);
+});
+
+await auth.signIn({ login: 'marcus', password: 'marcus' });
+await chat.subscribe({ room: 'Room1' });
+await chat.send({ room: 'Room1', message: 'Hello' });
 ```
 
 ## Domain logic
@@ -137,8 +141,6 @@ You can access node.js internal modules and third-party depende with namespaces:
 
 To add new dependency just use `npm install` command e.g. `npm i ws` and `ws` will be available as `npm.ws` after next (re)start.
 
-## Data access
-
 ## Bus
 
 Mapping remote services to namespaces of your application is easy, just put file `.service.js` in `application/bus/worldTime`:
@@ -172,6 +174,121 @@ try {
 } catch {
   console.log('Can not access time server');
 }
+```
+
+## Data access
+
+Let's look at a more complex endpoint: `application/api/geo/citiesByCountry.js`
+
+```js
+async ({ countryId }) => {
+  const fields = ['cityId', 'name'];
+  const where = { countryId };
+  const data = await db.pg.select('City', fields, where);
+  return { result: 'success', data };
+};
+```
+
+We need Postgres server running and dependencies installed: `npm i pg metasql`.
+To initialize connection to the database add following code to file `application/db/pg/start.js`:
+
+```js
+async () => {
+  const options = { ...config.database, console };
+  db.pg = new metarhia.metasql.Database(options);
+};
+```
+
+Also we need configuration in `application/config/database.js`:
+
+```js
+({
+  host: process.env.DB_HOST || '127.0.0.1',
+  port: 5432,
+  database: 'application',
+  user: 'marcus',
+  password: 'marcus',
+});
+```
+
+Then need to have a tables in database. To generate it just add following schemas.
+
+Schema `application/schemas/Country.js`:
+
+```js
+({
+  Entity: {},
+
+  name: { type: 'string', unique: true },
+});
+```
+
+Schema `application/schemas/City.js`:
+
+```js
+({
+  Entity: {},
+
+  name: { type: 'string', unique: true },
+  country: 'Country',
+});
+```
+
+Add database schemas configuration `application/schemas/.database.js`:
+
+```
+({
+  name: 'example',
+  version: 1,
+  driver: 'pg',
+});
+```
+
+Then generate SQL script by: `npx metasql c`
+
+After that we will get `application/schemas/database.sql` with two tables:
+
+```sql
+CREATE TABLE "Country" (
+  "countryId" bigint generated always as identity,
+  "name" varchar NOT NULL
+);
+
+ALTER TABLE "Country" ADD CONSTRAINT "pkCountry" PRIMARY KEY ("countryId");
+CREATE UNIQUE INDEX "akCountryName" ON "Country" ("name");
+
+CREATE TABLE "City" (
+  "cityId" bigint generated always as identity,
+  "name" varchar NOT NULL,
+  "countryId" bigint NOT NULL
+);
+
+ALTER TABLE "City" ADD CONSTRAINT "pkCity" PRIMARY KEY ("cityId");
+CREATE UNIQUE INDEX "akCityName" ON "City" ("name");
+ALTER TABLE "City" ADD CONSTRAINT "fkCityCountry" FOREIGN KEY ("countryId") REFERENCES "Country" ("countryId");
+```
+
+To put those tables in postgre server first run two SQL commands (you may use `psql` or any other tool to do that):
+- `CREATE USER marcus WITH PASSWORD 'marcus';`
+- `CREATE DATABASE application OWNER marcus;`
+
+Then execute `database.sql` with `psql`:
+
+```
+PGPASSWORD=marcus psql -d application -f application/schemas/database.sql -U marcus
+```
+
+Then we need a few records in each table:
+
+```sql
+INSERT INTO "Country" ("name") VALUES
+  ('Italy'),
+  ('Cuba');
+
+INSERT INTO "City" ("name", "countryId") VALUES
+  ('Rome', 1),
+  ('Havana', 2),
+  ('Livorno', 1);
 ```
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
