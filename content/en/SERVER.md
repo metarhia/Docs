@@ -33,8 +33,7 @@ console.log({ result });
 
 ## Context isolation
 
-- **Code sandboxing** for enhanced security and execution context isolation
-- **Code protection**: reference pollution prevention, prototype pollution prevention
+Metarhia provides isolation between users in terms of both state and control flow, and further isolates individual user requests by preventing the mutation of connection states from within the domain logic and API endpoints. The application server employs multiple techniques for code execution isolation: including V8 sandboxing, closures, and worker threads. The primary objectives of this isolation are to enhance security and prevent race conditions. Additionally, isolation helps to safeguard the code through both reference pollution prevention and prototype pollution prevention.
 
 ## Logging
 
