@@ -2,11 +2,15 @@
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
 
+Metarhia features an auto-loader for its codebase. Upon application start, it automatically loads all layers of code and dependencies, forming namespaces that are accessible from the application code. After loading is complete, it triggers `start` hooks. If files change on the disk, the application server will reload the new version on the fly without stopping the server. No connections will be broken, and no API calls will be terminated.
+
 ## API
 
 Let's introduce two basic concepts:
 - `endpoint` - a single API method or RPC procedure to be invoked from browser-side app or third-party apps. Endpoint has a contract or signature and a name.
 - `unit` - group of endpoints (an interface). Unit has a name, and may have a version (e.g. `chat.1`, `chat.2`, `auth`).
+
+In order to provide the best developer experience for rapid API development, Metarhia offers auto-routing for API requests and webhooks. There's no need to manually add routes; all calls made over supported protocols (HTTP, HTTPS, WS, WSS) will be automatically directed to `endpoints` based on file system paths. The format of request and response payloads is defined by the [Metacom protocol](https://github.com/metarhia/Contracts/blob/master/doc/Metacom.md) specification and implemented in the npm package [Metacom](https://www.npmjs.com/package/metacom). Metarhia supports automatic request concurrency control, including request execution timeouts and an execution queue with both timeout and queue size limitations. API calls can have contracts (schemas) for automatic input and output data validation. The application server provides isolation for code execution; for more details, see [isolation](https://github.com/metarhia/Docs/blob/main/content/en/SERVER.md#context-isolation). The application server also supports various API styles: RPC over AJAX, RPC over Websocket, REST, and webhooks.
 
 To create API endpoint put file `getCity.js` to folder `application/api/geo` with following source:
 
@@ -66,7 +70,13 @@ async ({ cityId }) => {
 
 ## Network
 
-Metarhia hides network protocol layer from developer at both client and server sides.
+Metarhia abstracts away the network protocol layer from the developer on both the client and server sides. You can invoke server methods as if they are simple functions in your client-side (or browser) application.
+
+The server spawns separate threads for:
+
+- The load balancer (always HTTP). However, you can disable the built-in load balancer in the configuration. The balancer redirects incoming traffic to one of the open ports using a round-robin algorithm for simple scaling. Alternatively an external balancer can be used
+- Each port (HTTP, HTTPS)
+
 Metarhia provides promise-based abstraction for RPC calls implemented in [metacom](https://github.com/metarhia/metacom).
 
 ```js
