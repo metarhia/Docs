@@ -1,6 +1,6 @@
 # 🚀 Getting started
 
-[👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🧩 Application server features](/content/en/SERVER.md)
+[👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
 
 ## Quick start
 
@@ -132,4 +132,4 @@ File `config/sessions.js`:
 });
 ```
 
-[👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🧩 Application server features](/content/en/SERVER.md)
+[👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
