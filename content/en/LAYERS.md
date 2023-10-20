@@ -1,6 +1,6 @@
 # 🥞 Application server layers
 
-[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
 
 Metarhia features an auto-loader for its codebase. Upon application start, it automatically loads all layers of code and dependencies, forming namespaces that are accessible from the application code. After loading is complete, it triggers `start` hooks. If files change on the disk, the application server will reload the new version on the fly without stopping the server. No connections will be broken, and no API calls will be terminated.
 
@@ -301,4 +301,4 @@ INSERT INTO "City" ("name", "countryId") VALUES
   ('Livorno', 1);
 ```
 
-[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🧩 Application server features](/content/en/SERVER.md)
+[👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
