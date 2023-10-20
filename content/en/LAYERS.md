@@ -186,6 +186,8 @@ try {
 }
 ```
 
+This will send HTTP GET request to `http://worldtimeapi.org/api/timezone/Europe/Rome`
+
 ## Data access
 
 Let's look at a more complex endpoint: `application/api/geo/citiesByCountry.js`
