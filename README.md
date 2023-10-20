@@ -11,6 +11,7 @@ Metarhia provides an all-in-one solution for a **reliable** and **efficient back
 - [🚀 Getting started](/content/en/START.md)
   - [Quick start and configuration](/content/en/START.md#quick-start)
   - [Application template](/content/en/START.md#application-template)
+  - [Application configuration](/content/en/START.md#application-configuration)
 - [🥞 Application server layers](/content/en/LAYERS.md)
   - [API layer: units and endpoints](/content/en/LAYERS.md#api)
   - [Network protocol layer: metacom](/content/en/LAYERS.md#network)
