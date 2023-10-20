@@ -33,10 +33,15 @@ console.log({ result });
 
 ## Context isolation
 
+- **Code sandboxing** for enhanced security and execution context isolation
+- **Code protection**: reference pollution prevention, prototype pollution prevention
+
 ## Logging
 
-Use `Console` interface from application code, e.g. `console.log('Hello');`
-See methods in node.js documentation: https://nodejs.org/api/console.html
+- Use `Console` interface from application code, e.g. `console.log('Hello');`
+  See methods in node.js documentation: https://nodejs.org/api/console.html
+- Log files buffering (lazy write), fetch buffers by timer and by buffer size limit
+- Log rotarion: keep logs N days, than delete automaticaly
 
 ## Serve static
 
@@ -44,9 +49,32 @@ Just pup all files for browser-side application here: `application/static`
 
 ## Scheduling
 
+You can schedule a task (function execution) at specific intervals or certain times leke here:
+
+```js
+const res = await application.scheduler.add({
+  name: 'name',
+  every: 'Sep 10th 10s',
+  args: { i: 2 },
+  run: 'lib.task1.f1',
+});
+console.log('Add task', res);
+// Output: Add task 2023-10-19-id-0
+```
+
+File `application/lib/task1/f1.js` will contain async function like this:
+
+```js
+async () => {
+  console.log('Task started');
+  await metarhia.metautil.delay(1000);
+  console.log('Task finished');
+};
+```
+
 ## Testing
 
-You can add tests for `application/domain/chat.js` in `application/domain/chat.test.js`:
+Metarhia uses node.js native test runner to execute tests. You can add tests for `application/domain/chat.js` in `application/domain/chat.test.js`:
 
 ```
 ({
@@ -76,11 +104,11 @@ const file = application.resources.get(`/fileName.exe`);
     
 ## Start
 
-Put `start.js` file to `application/domain`, `application/db`, or `application/lib`:
+You can create `start` hook by putting `start.js` file to `application/domain`, `application/db`, or `application/lib`:
 
 ```js
 async () => {
-  console.log('Code to be executed on start');
+  console.log('Code to be executed after start');
 };
 ```
 
@@ -89,5 +117,13 @@ async () => {
 Application server will stop after:
 - Signals: `SIGINT` and `SIGTERM`
 - Keyboard: `Ctrl + C`
+
+Before shutdown all `stop` hooks will be executed. You can place `spot.js` files to `application/domain`, `application/db`, or `application/lib` with async function inside like here:
+
+```js
+async () => {
+  console.log('Code to be executed before stop');
+};
+```
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🥞 Application server layers](/content/en/LAYERS.md)
