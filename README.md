@@ -19,7 +19,7 @@ Metarhia provides an all-in-one solution for a **reliable** and **efficient back
   - [Libraries: utilities](/content/en/LAYERS.md#libraries)
   - [Dependencies: node internal and npm libs](/content/en/LAYERS.md#dependencies)
   - [Bus: mapping remote services](/content/en/LAYERS.md#bus)
-  - [Data access leyer](/content/en/LAYERS.md#data-access)
+  - [Data access layer](/content/en/LAYERS.md#data-access)
 - [🗃️ Data modeling, storage, and access](/content/en/DATA.md)
   - [PostgreSQL driver](/content/en/DATA.md#postgresql)
   - [Redis usage](/content/en/DATA.md#redis)
