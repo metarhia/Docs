@@ -16,6 +16,7 @@ Metarhia provides an all-in-one solution for a **reliable** and **efficient back
   - [Module format](/content/en/START.md#module-format)
 - [🥞 Application server layers](/content/en/LAYERS.md)
   - [API layer: units and endpoints](/content/en/LAYERS.md#api)
+  - [Error-handling guidelines](/content/en/LAYERS.md#error-handling-guidelines)
   - [Network protocol layer: metacom](/content/en/LAYERS.md#network)
   - [Domain logic layer: state and procedures](/content/en/LAYERS.md#domain-logic)
   - [Libraries: utilities](/content/en/LAYERS.md#libraries)
