@@ -4,8 +4,8 @@
 
 ## Quick start
 
-- We recommend Linux for development and deploy but MacOS, FreeBSD and Windows are also supported
-- We need node.js 18.x or 20.x
+- We recommend Linux for development and deployment but MacOS, FreeBSD and Windows are also supported
+- We need Node.js 18.x or 20.x
 - How to create new repository
   - You can fork and clone [metarhia/Template](https://github.com/metarhia/Template) to your machine
   - Alternatively you can fork and clone [metarhia/Example](https://github.com/metarhia/Example)
