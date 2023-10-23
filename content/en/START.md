@@ -4,8 +4,8 @@
 
 ## Quick start
 
-- We recommend Linux for development and deployment but MacOS, FreeBSD and Windows are also supported
-- We need Node.js 18.x or 20.x
+- We recommend Linux for development ([for example Fedora](https://fedoraproject.org/workstation/download/)) and deployment but MacOS, FreeBSD and Windows are also supported
+- We need [Node.js 18.x or 20.x](https://nodejs.org/en/download)
 - How to create new repository
   - You can fork and clone [metarhia/Template](https://github.com/metarhia/Template) to your machine
   - Alternatively you can fork and clone [metarhia/Example](https://github.com/metarhia/Example)
@@ -131,5 +131,23 @@ File `config/sessions.js`:
   },
 });
 ```
+
+## Metarhia core libraries
+
+| Name | Description |
+| --- | --- |
+| [⚡ impress](https://github.com/metarhia/impress) | Enterprise application server for Node.js |
+| [🔌 metacom](https://github.com/metarhia/metacom) | RPC communication protocol for http, https, websocket, and websocket secure |
+| [📦 metavm](https://github.com/metarhia/metavm) | Script loader with isolated sandboxes |
+| [🧰 metautil](https://github.com/metarhia/metautil) | Metarhia utilities |
+| [📝 metalog](https://github.com/metarhia/metalog) | Logger |
+| [🔧 metaconfiguration](https://github.com/metarhia/metaconfiguration) | Configuration loader |
+| [🎨 concolor](https://github.com/metarhia/concolor) | Colouring template strings using tags with annotations |
+| [🧪 metatests](https://github.com/metarhia/metatests) | Extremely simple to use test framework |
+| [🐘 metasql](https://github.com/metarhia/metasql) | SQL builder and Postgres utilities |
+| [💡 metaschema](https://github.com/metarhia/metaschema) | Schema definition and validation |
+| [🕵️ metawatch](https://github.com/metarhia/metawatch) | Nested directories watch for node.js |
+| [💬 tickplate](https://github.com/metarhia/tickplate) | Back-tick template engine for JavaScript |
+| [📅 metascheduler](https://github.com/metarhia/metascheduler) | Task scheduler |
 
 [👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
