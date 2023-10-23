@@ -150,4 +150,44 @@ File `config/sessions.js`:
 | [💬 tickplate](https://github.com/metarhia/tickplate) | Back-tick template engine for JavaScript |
 | [📅 metascheduler](https://github.com/metarhia/metascheduler) | Task scheduler |
 
+## Module format
+
+All files with code in Metarhia applications should be in fillowing format. For example file `/application/domain/prepareReport.js`:
+
+```js
+(async (title, where) => {
+  const records = await domain.db.select('Report', ['*'], where);
+  const data = await domain.reports.prepare(records);
+  const result = await lib.pdf.render(title, data);
+  return result;
+});
+```
+
+will export a single method accessible as `domain.prepareReport` from any place of application.
+
+Module with multiple methods: `/application/domain/demo.js`, constants, private and public identifiers:
+
+```js
+const PRIVATE_CONSTANT = 500;
+let privateVariable = 100;
+
+({
+  PUBLIC_CONSTANT: 1000,
+  publicField: 'value',
+
+  syncMethod(value) {
+    const result = { data: privateVariable, value };
+    return result;
+  }
+
+  async asyncMethod({ getData }) {
+    const result = await getData(PRIVATE_CONSTANT);
+    return result;
+  }
+});
+```
+
+describes module and will generate namespace `domain.demo` where constant, fields, and methods will be accessible as `domain.demo.PUBLIC_CONSTANT`, `domain.demo.publicField`,
+`domain.demo.syncMethodName`, and `domain.demo.asyncMethodName`.
+
 [👉 Back to contents](/) | [🥞 Application server layers](/content/en/LAYERS.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
