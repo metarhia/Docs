@@ -40,15 +40,15 @@ Metarhia provides isolation between users in terms of both state and control flo
 - Use `Console` interface from application code, e.g. `console.log('Hello');`
   See methods in node.js documentation: https://nodejs.org/api/console.html
 - Log files buffering (lazy write), fetch buffers by timer and by buffer size limit
-- Log rotarion: keep logs N days, than delete automaticaly
+- Log rotation: keep logs N days, then delete automatically
 
 ## Serve static
 
-Just pup all files for browser-side application here: `application/static`
+Just put all files for browser-side application here: `application/static`
 
 ## Scheduling
 
-You can schedule a task (function execution) at specific intervals or certain times leke here:
+You can schedule a task (function execution) at specific intervals or certain times like here:
 
 ```js
 const res = await application.scheduler.add({
@@ -96,7 +96,7 @@ Metarhia uses node.js native test runner to execute tests. You can add tests for
 
 ## Resources
 
-Just pup all files here: `application/resources`. You can get Buffer with file content from code:
+Just put all files here: `application/resources`. You can get Buffer with file content from code:
 ```js
 const file = application.resources.get(`/fileName.exe`);
 ```
@@ -117,7 +117,7 @@ Application server will stop after:
 - Signals: `SIGINT` and `SIGTERM`
 - Keyboard: `Ctrl + C`
 
-Before shutdown all `stop` hooks will be executed. You can place `spot.js` files to `application/domain`, `application/db`, or `application/lib` with async function inside like here:
+Before shutdown all `stop` hooks will be executed. You can place `stop.js` files to `application/domain`, `application/db`, or `application/lib` with async function inside like here:
 
 ```js
 async () => {
