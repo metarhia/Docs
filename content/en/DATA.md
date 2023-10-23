@@ -34,7 +34,7 @@ You can initialize connection on start from `application/db/geo/start.js`:
 
 ```js
 async () => {
-  db.geo.pg = new Pool(config.database);
+  db.geo.pg = new npm.pg.Pool(config.database);
 };
 ```
 
@@ -53,7 +53,7 @@ Initialize connection from `application/db/redis/start.js`:
 
 ```js
 async () => {
-  db.redis.client = await createClient().connect();
+  db.redis.client = await npm.redis.createClient().connect();
 };
 ```
 
@@ -193,6 +193,19 @@ const query = db.pg.sql`
 See more examples: https://github.com/metarhia/metasql/blob/master/test/sql.js
 
 ## Knex query builder
+
+Put `start` hook to `application/db/pg/start.js`:
+
+```js
+async () => {
+  db.pg = npm.knex({
+    client: 'pg',
+    connection: config.database
+  });
+};
+```
+
+See docs here: https://knexjs.org/
 
 ## Metaschema domain model
 
