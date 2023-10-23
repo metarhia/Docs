@@ -201,7 +201,7 @@ Auxiliary code that is not related to subject domain, but we don't want to creat
 
 ## Dependencies
 
-You can access node.js internal modules and third-party depende with namespaces:
+You can access node.js internal modules and third-party dependencies with namespaces:
 - `node.`, e.g. `node.fs.readFile(filePath, callback);`
 - `npm.`, e.g. `const client = npm.redis.createClient();`
 - `metarhia.`, e.g. `const metacom = metarhia.metacom.Metacom.create('http://127.0.0.1:8001/api');`
