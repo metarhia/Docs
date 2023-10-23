@@ -125,6 +125,46 @@ Example with external schemas:
 });
 ```
 
+# Error-handling guidelines
+
+There is a difference between error and exception. Error is a normal result and regular application behaviour that should not break execution sequence while exception breaks execution sequence (serving client-side request or certain asynchronous business-logic scenario).
+
+Return error from method:
+
+```js
+(async ({ ...args }) => {
+  const data = await doSomething();
+  if (domain.module.validate(data)) {
+    return data;
+  } else {
+    return new Error('Data is not valid', 10);
+  }
+});
+```
+
+Metacom packets:
+
+- with data `{"callback":1,"result":{"key":"value"}}`
+- or serialized error: `{"callback":1,"error":{"message":"Data is not valid","code":10}}`
+
+Example with raise exception:
+
+- Application server will return HTTP 500 or abstract RPC error code.
+- Application server may transfer exceptions over the network without stack trace and sensitive error messages (all this data will be logged instead).
+
+```js
+(async ({ ...args }) => {
+  throw new Error('Method is not implemented');
+});
+```
+
+Result with exception (metacom packet): `{"callback":1,"error":{"message":"Internal Server Error","code":500}}`
+
+How to override error codes: `throw new Error('Method is not implemented', 404);`
+This will take error message from code: `{"callback":1,"error":{"message":"Not found","code":404}}`
+
+If you specify unknown code like this: `throw new Error('Method is not implemented', 12345);` this will generate: `"Internal Server Error"` with `"code":500`.
+
 ## Network
 
 Metarhia abstracts away the network protocol layer from the developer on both the client and server sides. You can invoke server methods as if they are simple functions in your client-side (or browser) application.
