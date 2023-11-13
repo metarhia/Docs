@@ -44,7 +44,11 @@ Metarhia provides isolation between users in terms of both state and control flo
 
 ## Serve static
 
-Just put all files for browser-side application here: `application/static`
+Just put all static files for browser-side application here: `application/static` and server will automatically load files to cache on start except large files (see configs for more details).
+
+Custom error pages: `static/.XXX.html` where `XXX` is error code, for example: `static/.404.html`. You can put different error page templates in different subfolders, for example: `static/.500.html` and `static/profile/.500.html`, nested folders can override templates.
+
+Virtual path: put template to `static/NAME/.virtual.html` where `NAME` is directory name or even nested path, for example: `static/article/.virtual.html` will be served for example getting `/article/programming/javascript`, except truly existing files.
 
 ## Scheduling
 
