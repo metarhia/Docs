@@ -26,13 +26,13 @@ Metarhia application example: [metarhia/Template](https://github.com/metarhia/Ex
 │   │       ├── 📄 send.js          # API endpoint
 │   │       ├── 📄 subscribe.js
 │   │       └── 📄 unsubscribe.js
-│   ├── 📁 bus                      # BUS: APIs mapped to application mamespaces
+│   ├── 📁 bus                      # BUS: APIs mapped to application namespaces
 │   ├── 📁 cert                     # SSL certificates
 │   ├── 📁 config                   # Configuration files
 │   ├── 📁 db                       # Database connections initialization
 │   ├── 📁 domain                   # Subject domain code
 │   ├── 📁 lib                      # Common code not related to the subject domain
-│   ├── 📁 resources                # Resources: files to be automaticaly loaded into memory
+│   ├── 📁 resources                # Resources: files to be automatically loaded into memory
 │   ├── 📁 schemas                  # Domain model schemas (for database, validation, gui generation etc.)
 │   └── 📁 static                   # Browser application (static files accessible from browser)
 ├── 📁 types                        # Typings in .d.ts format
@@ -83,8 +83,8 @@ File `config/server.js`:
   host: '0.0.0.0',     // Host ip address or `0.0.0.0` for all network interfaces
   balancer: 8000,      // Balancer port (remove this field to disable balancing)
   protocol: 'http',    // http or https (use http for ws and https for wss)
-  ports: [8001, 8002], // server ports
-  nagle: false,        // eneble Nagle's algorithm (immediately after the socket is established)
+  ports: [8001, 8002], // Server ports
+  nagle: false,        // Enable Nagle's algorithm (immediately after the socket is established)
   timeouts: {
     bind: 2000,        // Try to bind ports
     start: 30000,      // Application server start timeout
@@ -96,7 +96,7 @@ File `config/server.js`:
   queue: {
     concurrency: 1000, // Maximum API concurrency
     size: 2000,        // API queue size
-    timeout: 3000,     // queue timeout
+    timeout: 3000,     // Queue timeout
   },
   scheduler: {
     concurrency: 10,   // Task scheduler concurrency
@@ -152,7 +152,7 @@ File `config/sessions.js`:
 
 ## Module format
 
-All files with code in Metarhia applications should be in fillowing format. For example file `/application/domain/prepareReport.js`:
+All files with code in Metarhia applications should be in following format. For example file `/application/domain/prepareReport.js`:
 
 ```js
 (async (title, where) => {
