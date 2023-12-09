@@ -14,7 +14,7 @@ Let's introduce two basic concepts:
 
 In order to provide the best developer experience for rapid API development, Metarhia offers auto-routing for API requests and webhooks. There's no need to manually add routes; all calls made over supported protocols (HTTP, HTTPS, WS, WSS) will be automatically directed to `endpoints` based on file system paths. The format of request and response payloads is defined by the [Metacom protocol](https://github.com/metarhia/Contracts/blob/master/doc/Metacom.md) specification and implemented in the npm package [Metacom](https://www.npmjs.com/package/metacom). Metarhia supports automatic request concurrency control, including request execution timeouts and an execution queue with both timeout and queue size limitations. API calls can have contracts (schemas) for automatic input and output data validation. The application server provides isolation for code execution; for more details, see [isolation](https://github.com/metarhia/Docs/blob/main/content/en/SERVER.md#context-isolation). The application server also supports various API styles: RPC over AJAX, RPC over Websocket, REST, and webhooks.
 
-To create API endpoint put file `getCity.js` to folder `application/api/geo` with following source:
+To create API endpoint put file `getCity.js` to folder `application/api/example` with following source:
 
 ```js
 async ({ cityId }) => {
@@ -25,7 +25,7 @@ async ({ cityId }) => {
 
 - Now you can start the server: `node server.js`
 - Open the browser and DevTools (F12)
-- On the `Console` tab and write: `await api.geo.getCity({ cityId: 1 });`
+- On the `Console` tab and write: `await api.example.getCity({ cityId: 1 });`
 - You will get: `metacom.js:18 Uncaught Error: Forbidden`
 - You need either to deploy a database for the auth subsystem or remove restrictions to access this method
 - Add `access: 'public'` so endpoint will look like this:
