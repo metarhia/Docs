@@ -220,6 +220,15 @@ There is a special place for domain logic and application state: `application/do
 });
 ```
 
+The methods and public properties of the module will be available from another application layers through the `domain.chat` namespace. For example it made possible a thin API endpoint `application/api/chat/send.js` that will deliver a message from one chat room participant to all others without handling a state by itself:
+
+```js
+(async ({ room, message }) => {
+  domain.chat.send(room, message);
+  return true;
+});
+```
+
 ## Libraries
 
 Auxiliary code that is not related to subject domain, but we don't want to create or import separete dependencies for it, can be placed in: `application/lib`. For example:
