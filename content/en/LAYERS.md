@@ -222,7 +222,7 @@ There is a special place for domain logic and application state: `application/do
 
 ## Libraries
 
-Auxiliary code that is not related to subject domain, but we don't want to create or import separete dependencies for it, can be placed in: `application/lib`. For example:
+Auxiliary code that is not related to subject domain, but we don't want to create or import separate dependencies for it, can be placed in: `application/lib`. For example:
 
 ```js
 ({
