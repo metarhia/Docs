@@ -291,14 +291,14 @@ You can initialize database connection on application start from `application/db
 
 ```js
 async () => {
-  db.geo = new npm.pg.Pool(config.database);
+  db.geo.pg = new npm.pg.Pool(config.database);
 };
 ```
 
 After that you can access db driver from anywhere like:
 
 ```js
-const res = await db.geo.query('SELECT * from CITIES where ID = $1', [25]);
+const res = await db.geo.pg.query('SELECT * from CITIES where ID = $1', [25]);
 console.log(res.rows[0]);
 ```
 
