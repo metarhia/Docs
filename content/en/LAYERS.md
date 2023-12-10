@@ -296,21 +296,21 @@ This will send HTTP GET request to `http://worldtimeapi.org/api/timezone/Europe/
 
 ## Data access
 
-You can initialize database connection on application start from `application/db` for example putting `start` hook to `application/db/pg/start.js`:
+You can initialize database connection on application start from `application/db` for example putting `start` hook to `application/db/geo/start.js`:
 
 ```js
 async () => {
-  db.geo.pg = new Pool(config.database);
+  db.geo = new npm.pg.Pool(config.database);
 };
 ```
 
 After that you can access db driver from anywhere like:
 
 ```js
-const res = await db.geo.pg.query('SELECT * from CITIES where ID = $1', [25]);
+const res = await db.geo.query('SELECT * from CITIES where ID = $1', [25]);
 console.log(res.rows[0]);
 ```
 
-More examples in: [/content/en/DATA.md](/content/en/DATA.md)
+More details with examples in: [/content/en/DATA.md](/content/en/DATA.md)
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
