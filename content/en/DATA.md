@@ -77,6 +77,27 @@ async ({ countryId }) => {
 };
 ```
 
+It uses Metarhia's [native SQL builder](https://github.com/metarhia/metasql) to access data from PostgreSQL database. Exactly that example demonstrates simple `select` usage, one of the builder's function among bunch of others available: 
+- `row` to query and receive data of a single row
+- `scalar` to get result as a single scalar value
+- `col` to get values from the one column in a form of array
+- `dict` to get results of two columns from table as a dictionary object where first column values becomes keys, second column  — its related values.
+- `count` to get number of records in some table optionally restricted by where filter
+- `insert`
+- `update`
+- `delete`
+- `returning`
+- `order`
+- `desc` — counterpart of `order` for descending ordering
+- `offset`
+- `limit`
+- `query` as approach to use pg driver directly for any parameterized SQL
+- `sql` as alternative approach to build query using special SQL template syntax (more on that later).
+
+In case you had started with [metarhia/Example](https://github.com/metarhia/Example) setup of the Metasql query builder is already done there. Otherwise it will be necessary to make few initial setup steps.  
+
+### Initial setup
+
 We need Postgres server running and dependencies installed: `npm i pg metasql`.
 To initialize connection to the database add following code to file `application/db/pg/start.js`:
 
