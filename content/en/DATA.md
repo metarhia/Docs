@@ -202,14 +202,32 @@ INSERT INTO "City" ("name", "countryId") VALUES
 
 ## Metasql template sql
 
+Metasql has alternative syntax to create query: `sql` template function. Despite it looks like normal template string with SQL value, there is conversion to a parameterized query under the hood to fulfill security requirements. That syntax especially useful for complex queries when traditional builder's functions chaining approach becomes too complicated. Let's look at example:
+
 ```js
+const maxCount = 3;
 const query = db.pg.sql`
   SELECT * FROM "City"
-  WHERE "cityId" < ${5} AND "name" <> 'La Haye-en-Touraine'
+  WHERE "cityId" < ${5} AND "name" <> ${'excludedCity'}
   ORDER BY name
-  LIMIT 3
+  LIMIT ${maxCount}
 `;
 ```
+
+The result in `query` variable is a prepared statement, where:
+- number literal `5` converted into fixed query param
+- value of the `maxCount` variable included as fixed query param
+- `excludedCity` becomes a property name of an input argument, different value of which will become query parameter during every call to execute the statement.
+
+To execute this SQL query the statement object has special method `rows` . For example:
+
+```js
+const data = await query.rows({ excludedCity: 'La Haye-en-Touraine' });
+```
+
+> Note that if you don't provide value for the `excludedCity` — the key will be used among params as a string literal. 
+
+Other few methods of prepared statement quite the same as with traditional builder syntax: `row`, `scalar`, `col`, `count`, `dict`. That way you can create queries of unlimited complexity using available SQL operators.
 
 See more examples: https://github.com/metarhia/metasql/blob/master/test/sql.js
 
