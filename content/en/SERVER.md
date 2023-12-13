@@ -116,7 +116,7 @@ Examples for `every` field syntax:
 
 Metarhia uses node.js native test runner to execute tests. You can add tests for `application/domain/chat.js` in `application/domain/chat.test.js`:
 
-```
+```js
 ({
   name: 'Chat test',
 
