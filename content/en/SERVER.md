@@ -31,6 +31,8 @@ const result = await application.invoke({
 console.log({ result });
 ```
 
+Invocation of procedures has additional option to control — `exclusive` flag. Exclusivity means whether to capture a whole worker thread for execution or a procedure might be processed asynchronously beside the other non-exclusive procedures and tasks at the same thread. That way gives you flexibility in launching practical tasks logic to balance between more stable runtime for critical logic and handling higher workload of small async tasks (evenly spread among threads).
+
 ## Context isolation
 
 Metarhia provides isolation between users in terms of both state and control flow, and further isolates individual user requests by preventing the mutation of connection states from within the domain logic and API endpoints. The application server employs multiple techniques for code execution isolation: including V8 sandboxing, closures, and worker threads. The primary objectives of this isolation are to enhance security and prevent race conditions. Additionally, isolation helps to safeguard the code through both reference pollution prevention and prototype pollution prevention.
