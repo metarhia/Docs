@@ -311,6 +311,8 @@ const res = await db.geo.pg.query('SELECT * from CITIES where ID = $1', [25]);
 console.log(res.rows[0]);
 ```
 
+Are you notice a `Pool` assignment to `db.geo.pg` instead of just `db.geo` in the example? That's not strict requirement but rather convenient recommendation to assign initialized database's driver into sub-property of related namespace because data access layer isn't only for connection initialization. Think about this layer as a place for wide range of practical possibilities to organize efficient data access. You may start from just DB driver, but later you'll add some query builder beside or extend namespace with your own modules containing specific data management helpers on top of DB driver. Proposed layer organization will help to grow your application without breaking changes.     
+
 More details with examples in: [/content/en/DATA.md](/content/en/DATA.md)
 
 [👉 Back to contents](/) | [🚀 Getting started](/content/en/START.md) | [🗃️ Data modeling, storage, and access](/content/en/DATA.md) | [🧩 Application server features](/content/en/SERVER.md)
