@@ -186,6 +186,8 @@ you will receive:
 
 That's your turn to parse full path from `method` variable, convert and validate query params from `args` variable based on expected interface and to choose proper logic for handling request. That way you have full control over incoming webhook processing.
 
+> Currently webhooks required to be called mentioning explicit network port of an API thread in URL. For example if your [application configuration](/content/en/START.md#application-configuration) setup balancer port `8000` and two API server ports `8001` & `8002`, requesting `localhost:8001/api/hook` or `localhost:8002/api/hook` will work. However request to `localhost:8000/api/hook` will fallback to main static page. This behaviour might be changed in the future. 
+
 # Error-handling guidelines
 
 There is a difference between error and exception. Error is a normal result and regular application behaviour that should not break execution sequence while exception breaks execution sequence (serving client-side request or certain asynchronous business-logic scenario).
