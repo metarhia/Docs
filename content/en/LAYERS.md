@@ -125,6 +125,67 @@ Example with external schemas:
 });
 ```
 
+### Webhooks
+
+Special case of API unit is a webhook - endpoints intended to be called from 3rd party systems primarily using HTTP(s) transport. It's common practice for cross-system event based integration. Because of unknown in advance required interfaces, webhook unit provide lower level access to the incoming request's data. For example put the file `hook.1.js` into the `application/api` folder but instead of normal API endpoint code described earlier, include a module with single `router` method there:
+
+```js
+({
+  router({ method, args, verb, headers }) {
+    const ip = context.client.ip;
+    console.log({ method, args, ip, verb, headers });
+    return {};
+  },
+});
+```
+
+> Note that `hook` in file name isn't requirement to create webhook unit. You may name it as you like. Important part that matters — `router` method inside of that module.
+
+From now on application exposes virtual API endpoint with a path started as `/api/hook` that might contain any extended path and query variables as well as JSON body. All input parameters will be provided as arguments to your `router` function. For example if someone had make request 
+
+```
+POST /api/hook/with-possible/inner-path/12/variables?and=true&query=variables&of=3&types=all%20as%20strings
+
+BODY application/json
+{
+    "but": "Body properties will be parsed as JS types",
+    "bool": true,
+    "num": 45,
+    "nested": {
+        "a": 67,
+        "b": 89,
+        "c": ["d", "e", "f" ]
+    }
+}
+``` 
+
+you will receive: 
+
+```js
+{
+  method: 'hook/with-possible/inner-path/12/variables',
+  args: {
+    and: 'true',
+    query: 'variables',
+    of: '3',
+    types: 'all as strings',
+    but: 'Body properties will be parsed as JS types',
+    bool: true,
+    num: 45,
+    nested: { a: 67, b: 89, c: ['d', 'e', 'f'] }
+  },
+  ip: '127.0.0.1',
+  verb: 'POST',
+  headers: {
+    host: 'localhost:8002',
+    'content-type': 'application/json',
+    // ... other HTTP headers
+  }
+}
+```
+
+That's your turn to parse full path from `method` variable, convert and validate query params from `args` variable based on expected interface and to choose proper logic for handling request. That way you have full control over incoming webhook processing.
+
 # Error-handling guidelines
 
 There is a difference between error and exception. Error is a normal result and regular application behaviour that should not break execution sequence while exception breaks execution sequence (serving client-side request or certain asynchronous business-logic scenario).
