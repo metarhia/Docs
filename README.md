@@ -73,6 +73,9 @@ Metarhia provides an all-in-one solution for a **reliable** and **efficient back
 
 Those features will be implemented in nearest future (3-6 months):
 
+- Metacom
+  - Call and stream id are numbers in 3.x and string in metacom 4.x, you can use for example UUIDv4, UUID64 (UUID with base64 encoding), GSID
+  - We need proxy clients (redirection hubs for service worker)
 - Server health monitoring
 - Database migrations
 - State synchronization mechanism with transactions and subscription
