@@ -178,7 +178,7 @@ let privateVariable = 100;
   syncMethod(value) {
     const result = { data: privateVariable, value };
     return result;
-  }
+  },
 
   async asyncMethod({ getData }) {
     const result = await getData(PRIVATE_CONSTANT);
