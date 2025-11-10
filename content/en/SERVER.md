@@ -146,12 +146,29 @@ const file = application.resources.get(`/fileName.exe`);
     
 ## Start
 
-You can create `start` hook by putting `start.js` file to `application/domain`, `application/db`, or `application/lib`:
+You can create `start` hook by putting `start.js` file to `application/domain`, `application/db`, `application/lib` or any inner nested folders there:
 
 ```js
 async () => {
   console.log('Code to be executed after start');
 };
+```
+
+Note that due to multithreaded nature of Metarhia application server, every `start` or `stop` hook by default will be executed in every worker thread established based on configuration. Sometimes it's necessary to run some hook or part of it's logic only at specific thread or except some threads, e.g. in task threads but not threads with opened network port for API. To check the current executing thread there is exposed property `application.worker.id` available from any place of application. It contains value in format `W1`, where the number is counted index of specific worker thread. Probably you had already familiar with workers IDs by looking into application log where every record has explicit mark at what thread it happened. Using `application.worker.id` you may place simple guard or conditional blocks inside of `start` and `stop` hooks, for example: 
+
+```js
+if (application.worker.id !== 'W1') return;
+// The following code will run in the first thread only
+```
+
+```js
+if (application.worker.id === 'W2') {
+  // Run this code in the second thread only
+}
+if (application.worker.id === 'W4') {
+  // Run that different code in the 4th thread only
+}
+// All the following code will still be executed in every thread 
 ```
 
 ## Graceful shutdown
