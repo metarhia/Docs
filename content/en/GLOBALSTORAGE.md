@@ -81,3 +81,10 @@ Declarative schema language for modeling, validation, and data synchronization. 
 - [metarhia/impress](https://github.com/metarhia/impress)
 - [metarhia/metautil](https://github.com/metarhia/metautil)
 - [HowProgrammingWorks/UUID](https://github.com/HowProgrammingWorks/UUID)
+
+## Related videos
+
+- [Local-first для фронтенда: CRDT, PWA, OPFS, Blockchain прямо в браузере](https://www.youtube.com/live/cSWOOVh7xkU)
+- [Local-first приложение: PWA + CRDT + OPFS + Node.js + Websocket + Service Worker](https://youtu.be/jHgprxfOgBY)
+- [PWA: Progressive Web App — Websocket, local-first, offline-first установка JavaScript приложение](https://youtu.be/w0CDo7u2L0E)
+- [Local-first подход, CRDT и фронтенд — синхронизация в распределенных системах — Metarhia Weekly](https://youtu.be/XNUNxghX9dg)
