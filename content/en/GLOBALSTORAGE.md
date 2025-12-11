@@ -1,72 +1,83 @@
-# 🌍 Global storage
+# 🌐 Global storage
+
+> Know `localStorage`? Meet `globalstorage` — the distributed database and application publishing platform.
 
 These technologies together form the infrastructure for local-first applications.
 
-![Local-first architecture](./local-first.jpg)
-
 - [metarhia/globalstorage](https://github.com/metarhia/globalstorage)
 
-## PWA (Progressive Web App)
+## 🚀 PWA (Progressive Web App)
 
 Web apps with UX close to native: offline mode, installation, fast loading. PWAs help when connectivity is poor or networks are slow by combining strengths of web and native platforms.
 
-- [HowProgrammingWorks/PWA](https://github.com/HowProgrammingWorks/PWA)
+- [Web App Manifest on MDN](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+- [Service Worker on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+- [Code examples](https://github.com/HowProgrammingWorks/PWA)
+
+## 🔀 Sync Engine
 
 ## CRDT (Conflict-Free Replicated Data Types)
 
 Data structures that enable automatic conflict resolution in distributed systems. CRDTs simplify synchronization and concurrent editing, enabling offline-first applications without data loss or conflicts.
 
-## CAS Containers (Compare-And-Swap)
+- [Code examples](https://github.com/HowProgrammingWorks/CRDT)
+
+## ↔️ CAS Containers (Compare-And-Swap)
 
 An atomic concurrency mechanism that stores records protected by hashes or versions. CAS containers help avoid race conditions and concurrent modification conflicts, ensuring data consistency and enabling optimistic concurrency control.
 
-- [HowProgrammingWorks/CAS](https://github.com/HowProgrammingWorks/CAS)
+- [Code examples](https://github.com/HowProgrammingWorks/CAS)
 
-## IndexedDB (browser built-in database)
+## 🗃️ IndexedDB (browser built-in database)
 
 Client-side database API for transactional storage of structured data in browsers. IndexedDB provides offline persistence, local querying, caching, and support for building b-tree indexes.
 
-- [HowProgrammingWorks/indexedDB](https://github.com/HowProgrammingWorks/indexedDB)
+- [IndexedDB on MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+- [Code examples](https://github.com/HowProgrammingWorks/indexedDB)
 - [metarhia/indexeddb-client](https://github.com/metarhia/indexeddb-client)
 
-## OPFS (Origin Private File System)
+## 📥 OPFS (Origin Private File System)
 
 Secure, high-performance file system accessible only by web applications within their origin. OPFS is suited for large file storage and high-speed file operations in the browser.
 
-- [HowProgrammingWorks/OPFS](https://github.com/HowProgrammingWorks/OPFS)
+- [OPFS on MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
+- [Code examples](https://github.com/HowProgrammingWorks/OPFS)
 
-## Blockchain (without mining)
+## 🧊 Blockchain (without mining)
 
 Distributed ledger providing immutable history and strong integrity guarantees. Used for decentralized databases where immutability, transparency, and trust are required.
 
-- [HowProgrammingWorks/Blockchain](https://github.com/HowProgrammingWorks/Blockchain)
+- [Code examples](https://github.com/HowProgrammingWorks/Blockchain)
 
-## JavaScript Smart Contracts
+## 🤖 Bot Engine
+
+## 🏃 JavaScript Smart Contracts
 
 Business logic executed in JavaScript within decentralized environments. Solves automation and trust issues related to data changes, ensures automatic enforcement of agreements, and secure code execution.
 
-- [HowProgrammingWorks/UUID](https://github.com/HowProgrammingWorks/UUID)
-
-## WebSocket
+## 🔌 WebSocket
 
 Protocol for real-time, two-way data exchange over a single TCP connection. WebSocket reduces latency and enables interactive near-real-time applications.
 
-- [HowProgrammingWorks/WebsocketChat](https://github.com/HowProgrammingWorks/WebsocketChat)
+- [WebSocket on MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+- [Code examples](https://github.com/HowProgrammingWorks/WebsocketChat)
 - [metarhia/metacom](https://github.com/metarhia/metacom)
 
-## WebRTC (Web Real-Time Communication)
+## 💬 WebRTC (Web Real-Time Communication)
 
 Protocol for real-time streaming of multimedia and peer-to-peer data exchange. WebRTC Solves issues of direct real-time communication, low latency, and decentralization without intermediary servers.
 
-- [HowProgrammingWorks/WebRTC](https://github.com/HowProgrammingWorks/WebRTC)
+- [WebRTC on MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
+- [Code examples](https://github.com/HowProgrammingWorks/WebRTC)
 
-## Metaschema
+## 🤝 Metaschema
 
 Declarative schema language for modeling, validation, and data synchronization. Metaschema addresses data inconsistency, schema evolution and migration, and simplifies metadata definition.
 
 - [metarhia/metaschema](https://github.com/metarhia/metaschema)
 
-## Related repositories
+## 🧰 Metarhia tools
 
 - [metarhia/impress](https://github.com/metarhia/impress)
 - [metarhia/metautil](https://github.com/metarhia/metautil)
+- [HowProgrammingWorks/UUID](https://github.com/HowProgrammingWorks/UUID)
