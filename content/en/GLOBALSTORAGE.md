@@ -21,12 +21,15 @@ Web apps with UX close to native: offline mode, installation, fast loading. PWAs
 Data structures that enable automatic conflict resolution in distributed systems. CRDTs simplify synchronization and concurrent editing, enabling offline-first applications without data loss or conflicts.
 
 - [Code examples](https://github.com/HowProgrammingWorks/CRDT)
+- [CRDT: G-Counter, PN-Counter, Δ-G-Counter, State-based, Operation-based, Delta-based for JavaScript](https://youtu.be/uOmRdXlVkYM)
+- [CRDT: множества G-set, 2P-set, LWW-set, OR-set, PN-set на JavaScript](https://youtu.be/7HVvvtQdkRg)
 
 ## ↔️ CAS Containers (Compare-And-Swap)
 
 An atomic concurrency mechanism that stores records protected by hashes or versions. CAS containers help avoid race conditions and concurrent modification conflicts, ensuring data consistency and enabling optimistic concurrency control.
 
 - [Code examples](https://github.com/HowProgrammingWorks/CAS)
+- [CAS: Compare and Swap контейнеры значений и записей со сравнением по версии и хешу](https://youtu.be/_S8zcKaj7Fk)
 
 ## 🗃️ IndexedDB (browser built-in database)
 
@@ -48,6 +51,7 @@ Secure, high-performance file system accessible only by web applications within 
 Distributed ledger providing immutable history and strong integrity guarantees. Used for decentralized databases where immutability, transparency, and trust are required.
 
 - [Code examples](https://github.com/HowProgrammingWorks/Blockchain)
+- [Blockchain и распределенная база данных Globalstorage, CRDT, синхронизация и разрешение конфликтов](https://youtu.be/7Scep7CXKoI)
 
 ## 🤖 Bot Engine
 
@@ -62,6 +66,8 @@ Protocol for real-time, two-way data exchange over a single TCP connection. WebS
 - [WebSocket on MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 - [Code examples](https://github.com/HowProgrammingWorks/WebsocketChat)
 - [metarhia/metacom](https://github.com/metarhia/metacom)
+- [Websocket Server на Node.js](https://youtu.be/Sf7ln3n16ws)
+- [Websocket ревью реализации на JavaScript](https://youtu.be/j1PEkJtIca0)
 
 ## 💬 WebRTC (Web Real-Time Communication)
 
@@ -88,3 +94,4 @@ Declarative schema language for modeling, validation, and data synchronization. 
 - [Local-first приложение: PWA + CRDT + OPFS + Node.js + Websocket + Service Worker](https://youtu.be/jHgprxfOgBY)
 - [PWA: Progressive Web App — Websocket, local-first, offline-first установка JavaScript приложение](https://youtu.be/w0CDo7u2L0E)
 - [Local-first подход, CRDT и фронтенд — синхронизация в распределенных системах — Metarhia Weekly](https://youtu.be/XNUNxghX9dg)
+- [Презентация техстека Metarhia](https://youtu.be/PHyl4b8Fj5A)
