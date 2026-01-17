@@ -3,8 +3,9 @@
 > Know `localStorage`? Meet `globalstorage` — the distributed database and application publishing platform.
 
 These technologies together form the infrastructure for local-first applications.
-
 - [metarhia/globalstorage](https://github.com/metarhia/globalstorage)
+
+![Scanned_20260117-1216](https://github.com/user-attachments/assets/3dca2872-9190-43e4-b649-6710e3f1cb09)
 
 ## 🚀 PWA (Progressive Web App)
 
