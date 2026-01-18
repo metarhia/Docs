@@ -5,7 +5,7 @@
 These technologies together form the infrastructure for local-first applications.
 - [metarhia/globalstorage](https://github.com/metarhia/globalstorage)
 
-![gs-flow](https://github.com/user-attachments/assets/dc76989e-9ddb-481a-9055-cee52157e5b8)
+<img src="https://github.com/user-attachments/assets/dc76989e-9ddb-481a-9055-cee52157e5b8" width="600" />
 
 ## 🚀 PWA (Progressive Web App)
 
