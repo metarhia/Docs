@@ -101,7 +101,7 @@ File `config/server.js`:
   scheduler: {
     concurrency: 10,   // Task scheduler concurrency
     size: 2000,        // Scheduler queue size
-    timeout: 3000,     // Task execution timeout
+    timeout: 3000,     // Tasks queue timeout
   },
   workers: {
     pool: 0,           // Workers pool size
