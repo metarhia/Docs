@@ -160,10 +160,10 @@ Example with raise exception:
 
 Result with exception (metacom packet): `{"callback":1,"error":{"message":"Internal Server Error","code":500}}`
 
-How to override error codes: `throw new Error('Method is not implemented', 404);`
-This will take error message from code: `{"callback":1,"error":{"message":"Not found","code":404}}`
+How to override error codes: `throw new Error('Not found', 404);`
+This will take error message and code as is: `{"callback":1,"error":{"message":"Not found","code":404}}`
 
-If you specify unknown code like this: `throw new Error('Method is not implemented', 12345);` this will generate: `"Internal Server Error"` with `"code":500`.
+If you specify unknown code like this `throw new Error('Method is not implemented', 12345);`, this will generate: `"Internal Server Error"` with `"code":500`.
 
 ## Network
 
